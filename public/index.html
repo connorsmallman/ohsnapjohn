@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Snap it</title>
+    <style>
+      img {
+        display: block;
+        margin: 0 auto; 
+      }
+
+      label {
+        display: block;
+        text-align: center;
+      }
+
+      input {
+        width: 58.5%;
+        padding: .4rem .2rem;
+        margin: .2rem auto;
+        display: block;
+      }
+
+      button {
+        padding: .6rem .8rem;
+        display: block;
+        margin: 0 auto;
+      }
+    </style>
+  </head>
+  <body>
+    <img src="https://media.tenor.com/images/680c5bb2448624b8a8be0aeb8b241f7e/tenor.gif"/>
+    <input type="input" placeholder="Enter the url of where to snap" />
+    <button>Snap</button>
+    <script>
+      const submit = document.querySelector('button');
+      const input = document.querySelector('input');
+
+      submit.addEventListener('click', function() {
+        const url = input.value;
+        const isValid = /^(ftp|http|https):\/\/[^ "]+$/.test(url);
+        if (!url.value && !isValid) {
+          alert('Please use a valud url');
+        }
+
+        location.href = `/snap?url=${encodeURIComponent(url)}`;
+      });
+    </script>
+  </body>
+</html>
